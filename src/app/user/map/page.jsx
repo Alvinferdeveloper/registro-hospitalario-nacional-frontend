@@ -79,7 +79,7 @@ const ubicaciones = [
 ]
 
 const defaultIcon = L.icon({
-  iconUrl: "https://www.flaticon.com/free-icons/hospital",
+  iconUrl: "/hospital.png",
   shadowUrl: markerShadow.src,
   iconSize: [25, 41], // Tamaño del ícono
   iconAnchor: [12, 41], // Punto del ícono que apunta a la ubicación en el mapa
@@ -95,11 +95,15 @@ export default function Map(){
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={[12.7938379, -85.2245743]} icon={defaultIcon}>
+      {
+        ubicaciones.map((ubicacion, index)=>(
+        <Marker position={[ubicacion.Latitud, ubicacion.Longitud]} icon={defaultIcon}>
         <Popup>
          <a href="/hola">Informacion del hospital</a>
         </Popup>
       </Marker>
+        ))
+      }
     </MapContainer>
   );
       
