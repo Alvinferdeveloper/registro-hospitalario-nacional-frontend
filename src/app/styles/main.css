@@ -1,0 +1,281 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth; /* Para una transición suave en los anclajes */
+   
+}
+
+.header {
+    position: fixed; /* Fija la barra de navegación en la parte superior */
+    top: 0; /* Asegura que esté en la parte superior */
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000; /* Asegura que el nav esté encima del contenido */
+}
+
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header img {
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.hero {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 50px;
+background: 
+linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+),
+url('../../../public/imagenes/fondo.jpg') no-repeat center center/cover;
+color: #fff;
+height: 100vh;
+position: relative;
+text-align: center;
+overflow: hidden; /* Asegura que el degradado cubra el área deseada */
+}
+
+.hero::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 15%; /* Aumenta la altura para un degradado más sutil */
+background: linear-gradient(
+to bottom, 
+rgba(255, 255, 255, 0) 0%, /* Color blanco transparente */
+rgba(255, 255, 255, 0.5) 100% /* Color blanco semitransparente */
+);
+pointer-events: none; /* Permite que los clics pasen a través del degradado */
+}
+
+
+
+.hero-content {
+    max-width: 600px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out; /* Animación de entrada */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0e2134;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.doctor-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden; /* Oculta el borde final de la imagen */
+}
+
+.doctor {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.doctor img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block; /* Asegura que no haya espacios en blanco debajo de la imagen */
+}
+
+
+.doctor::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Ajusta la altura según lo necesario */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70%, 50% 100%);
+    pointer-events: none; /* Permite que los clics pasen a la imagen */
+}
+
+.services {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.services h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #0e2134;
+    animation: fadeIn 1s ease-out; /* Animación de entrada */
+}
+
+.service-item {
+    display: inline-block;
+    width: 250px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    transition: transform 0.3s ease-out;
+    animation: fadeInUp 1.2s ease-out; /* Animación de entrada */
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-item img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #0e2134;
+}
+
+.service-item p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+footer {
+    background-color: #0e2134;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    animation: fadeInUp 1.5s ease-out; /* Animación de entrada */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #f4f4f4;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .hero-content {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
