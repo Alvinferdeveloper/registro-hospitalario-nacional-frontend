@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="">
       <header className="header">
         <div className="container">
             <Image src="/../../public/imagenes/fondo.jpg " width={500} height={500} alt="SMILE Clinic"></Image>
@@ -25,7 +25,7 @@ export default function Home() {
         </div>
         <div className="doctor-container">
             <div className="doctor">
-                <Image src="/imagenes/doctor.png" width={500} height={500}alt="Doctor Image"></Image>
+                <Image src="/imagenes/doctor.png"  className= "doctor__img" width={500} height={500}alt="Doctor Image"></Image>
             </div>
         </div>
     </section>

@@ -21,8 +21,3 @@ body {
   background:whitesmoke;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
