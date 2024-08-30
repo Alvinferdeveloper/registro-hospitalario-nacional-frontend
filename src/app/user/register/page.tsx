@@ -1,8 +1,17 @@
-import FormRegister from "@/app/components/formRegister";
-export default function Register() {
+import UserFormRegister from "@/app/components/userFormRegister";
+import { supabase } from "@/app/libs/supabaseClient";
+
+interface Departament{
+  id:number;
+  name:string;
+}
+export default async function Register() {
+  let { data: departaments} = await supabase
+  .from('departaments')
+  .select('id,name');
   return (
     <div className=" w-[100vw] flex justify-center md:h-screen items-center flex-col">
-      <FormRegister/>
+      <UserFormRegister departaments={departaments as Departament[]}/>
     </div>
   );
 }
