@@ -8,29 +8,34 @@ body {
 }
 
 .header {
-    position: fixed; /* Fija la barra de navegación en la parte superior */
-    top: 0; /* Asegura que esté en la parte superior */
+    /*position: fixed;  Fija la barra de navegación en la parte superior */
+    background-color: #0e2134;
+    top: 0;
+    left: 0; /* Asegura que esté en la parte superior */
     width: 100%;
-    padding: 10px 0;
-    z-index: 1000; /* Asegura que el nav esté encima del contenido */
-}
-
-
-.header .container {
+    height: 80px;
     display: flex;
     justify-content: space-between;
+    z-index: 1000; /* Asegura que el nav esté encima del contenido */
     align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
+
+  
 }
 
 .header img {
-    height: 50px;
+    height: 120px;
+    width: 200px;
+    left: 50px;
+    filter: drop-shadow(2px 2px 2px black);
+    margin-left: 20px;
 }
 
 .nav-links {
     display: flex;
     gap: 15px;
+    height: 30px;
+    margin-right: 20px;
+   
 }
 
 .nav-links a {

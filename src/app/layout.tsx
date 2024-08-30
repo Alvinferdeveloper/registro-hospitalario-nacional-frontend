@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Handlee } from "next/font/google";
+import { Roboto } from "next/font/google";
 import './globals.css'
 
 import "@/app/styles/main.css";
 import {NextUIProvider} from "@nextui-org/react";
 
-const inter = Handlee({weight: "400", subsets:['latin']});
+const inter = Roboto({weight: "400", subsets:['latin']});
 
 export const metadata: Metadata = {
   title: "Create Next App",
