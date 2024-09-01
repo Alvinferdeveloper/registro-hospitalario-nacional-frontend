@@ -1,0 +1,12 @@
+span[data-selected="true"] {
+    background-color: #091f2c!important; /* Fondo azul personalizado */
+    color: #ffffff; /* Texto blanco */
+    font-weight: bold; /* Texto en negrita */
+  }
+
+  span[data-selected="true"] span {
+   /* Fondo azul personalizado */
+    color: #ffffff; /* Texto blanco */
+    
+  }
+  

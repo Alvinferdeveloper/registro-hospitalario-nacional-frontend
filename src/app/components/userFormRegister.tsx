@@ -4,41 +4,40 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { userFormRegisterSchema } from "../utils/validationSchemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { bloodTypes, maritalStatus } from "../constants/inputConstants";
-
+import useRegister from "../Hooks/user/useRegister";
+import { CalendarDate } from '@internationalized/date'
+import { CircularProgress } from "@nextui-org/react";
+import { UserRegisterInputs } from "../types/types";
+import './../styles/userFormRegister.css';
 interface Departament {
     id: number;
     name: string;
 
 }
 
-interface Inputs {
-    name:string;
-    lastName:string;
-    identification:string;
-    municipio:string;
-    city:string;
-    address?:string;
-    phoneNumber?: string;
-    email:string;
-    password:string;
-    birthDate:Date;
-}
-
 export default function UserFormRegister({ departaments }: { departaments: Departament[] }) {
     const {
         register,
         handleSubmit,
+        setValue,
+        control,
         formState: { errors },
-      } = useForm<Inputs>({
-        resolver:yupResolver(userFormRegisterSchema)
-      })
+    } = useForm<UserRegisterInputs>({
+        defaultValues: {
+            gender: 'M',
+        },
+        resolver: yupResolver(userFormRegisterSchema)
+    })
 
-    const onSubmit: SubmitHandler<Inputs>  = (data) => console.log(data)
-    
+    const { register: registerUser, error: registerError, loading } = useRegister();
+
+    const onSubmit: SubmitHandler<UserRegisterInputs> = (data) => {
+        registerUser(data)
+    }
 
     return (
         <form className=" w-[80%] md:w-[60%] pt-8 pb-8 md:pt-20 md:pb-20 border-black border-[1px] flex  flex-wrap  mb-6 md:mb-0  gap-4 justify-center relative"
-        onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)}
         >
             <Input
                 type="text"
@@ -66,8 +65,8 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 variant={"underlined"}
                 label="Cedula"
                 placeholder="Ingrese cedula o partida de nacimiento"
-                isInvalid={errors.identification ? true : false}
-                errorMessage={errors.identification?.message}
+                isInvalid={errors.identification || registerError?.email ? true : false}
+                errorMessage={errors.identification?.message || registerError?.identification}
                 {...register("identification")}
             />
             <Select
@@ -81,6 +80,7 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                     label: "text-white",
                     value: "text-white"
                 }}
+                {...register('maritalStatus')}
                 value={maritalStatus[0]}
             >
                 {
@@ -92,18 +92,20 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                     ))
                 }
             </Select>
-            
+
 
             <Select
                 size={"sm"}
                 label="Tipo de sangre"
-                className="max-w-xs text-white w-[80%] md:w-[200px]"
+                className="max-w-xs text-whitew-[80%] md:w-[200px] "
                 color="primary"
                 data-hover=""
                 classNames={{
                     trigger: "bg-primary text-white hover:bg-primaryHover ",
                     label: "text-white",
+                    value: "text-white"
                 }}
+                {...register("bloodType")}
                 value={bloodTypes[0]}
             >
                 {
@@ -120,8 +122,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 orientation="horizontal"
                 className="w-[80%] md:w-[200px]"
                 size="sm"
+                value={control._getWatch("gender")}
+                onChange={(e) => setValue('gender', e.target.value)}
             >
-                <Radio value="F" size="sm" checked>
+                <Radio value="F" size="sm">
                     Femenino
                 </Radio>
                 <Radio value="M" size="sm">
@@ -129,21 +133,23 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 </Radio>
             </RadioGroup>
             <Select
-             size={"sm"}
-             label="Departamentos"
-             className="max-w-xs text-white w-[80%] md:w-[200px]"
-             color="primary"
-             data-hover=""
-             classNames={{
-                 trigger: "bg-primary text-white hover:bg-primaryHover ",
-                 label: "text-white",
-             }}
-             value={departaments[0].name}
+                size={"sm"}
+                label="Departamentos"
+                className="max-w-xs text-whitew-[80%] md:w-[200px] "
+                color="primary"
+                data-hover=""
+                classNames={{
+                    trigger: "bg-primary text-white hover:bg-primaryHover ",
+                    label: "text-white",
+                    value: "text-white"
+                }}
+                {...register("departament")}
+                value={departaments[0].name}
             >
 
                 {
                     departaments.map(departament => (
-                        <SelectItem key={departament.id}  value={departament.id} color="default" className=" text-black">
+                        <SelectItem key={departament.id} value={departament.id} color="default" className=" text-black">
                             {departament.name}
                         </SelectItem>
 
@@ -191,24 +197,34 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 isInvalid={errors.phoneNumber ? true : false}
                 errorMessage={errors.phoneNumber?.message}
                 {...register("phoneNumber")}
-                
+
             />
-           
-            <DatePicker label="Fecha de nacimiento" name="birthDate"  className="w-[80%] md:w-[200px] "  
-                color="default"
+
+            <DatePicker label="Fecha de nacimiento" name="birthDate" className="w-[80%] md:w-[200px] text-white"
+
                 showMonthAndYearPickers
-                />
+
+
+                defaultValue={new CalendarDate(2002, 5, 8)}
+                onChange={(e) => {
+                    const date = e ? new Date(e.year, e.month - 1, e.day) : new Date();
+                    setValue('birthDate', date);
+                }}
+                isInvalid={errors.birthDate ? true : false}
+                errorMessage={errors.birthDate?.message}
+
+            />
             <Input
                 type="email"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
                 label="Email"
                 placeholder="Ingrese su email"
-                isInvalid={errors.email ? true : false}
-                errorMessage={errors.email?.message}
+                isInvalid={errors.email || registerError?.email ? true : false}
+                errorMessage={errors.email?.message || registerError?.email}
                 {...register("email")}
             />
-            
+
             <Input
                 type="password"
                 className="w-[80%] md:w-[200px] "
@@ -229,6 +245,13 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                     Registrar
                 </Button>
             </div>
+            {
+                loading && (
+                    <div className=" w-full flex justify-center mt-8">
+                        <CircularProgress aria-label="Loading..." />
+                    </div>
+                )
+            }
         </form>
     )
 }

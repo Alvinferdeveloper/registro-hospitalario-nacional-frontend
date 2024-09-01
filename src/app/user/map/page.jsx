@@ -97,7 +97,7 @@ export default function Map(){
       />
       {
         ubicaciones.map((ubicacion, index)=>(
-        <Marker position={[ubicacion.Latitud, ubicacion.Longitud]} icon={defaultIcon}>
+        <Marker position={[ubicacion.Latitud, ubicacion.Longitud]} key={index} icon={defaultIcon}>
         <Popup>
          <a href="/hola">Informacion del hospital</a>
         </Popup>
