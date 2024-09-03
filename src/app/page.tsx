@@ -47,57 +47,137 @@ export default function Home() {
       <section className="services">
         <div className="service-item">
           <img
-            src="/../../public/imagenes/doctor.png"
+            src="/imagenes/history.jpg"
             width={500}
             height={500}
             alt="Servicio 1"
           ></img>
-          <h3>Atención 24/7</h3>
+          <h3>Historial Medico</h3>
           <p>Acceso a atención médica en cualquier momento del día.</p>
+          <a href="#" className="btn1">
+            Entrar
+          </a>
         </div>
         <div className="service-item">
-          <Image src="" alt="Servicio 2"></Image>
-          <h3>Especialistas</h3>
+        <img
+            src="/imagenes/consulta.jpg"
+            width={500}
+            height={500}
+            alt="Servicio 1"
+          ></img>
+          <h3>Citas Online</h3>
           <p>Los mejores especialistas a tu disposición.</p>
+          <a href="#" className="btn1">
+            Entrar
+          </a>
         </div>
         <div className="service-item">
-          <Image src="" alt="Servicio 3"></Image>
-          <h3>Consulta en Línea</h3>
+        <img
+            src="/imagenes/historial.jpg"
+            width={500}
+            height={500}
+            alt="Servicio 1"
+          ></img>
+          <h3>Compartir Historial</h3>
           <p>Realiza tus consultas desde la comodidad de tu hogar.</p>
+          <a href="#" className="btn1">
+            Entrar
+          </a>
         </div>
 
         <section className="services">
           <div className="service-item">
             <img
-              src="/../../public/imagenes/doctor.png"
+              src="/imagenes/noticia.jpg"
               width={500}
               height={500}
               alt="Servicio 1"
             ></img>
-            <h3>Atención 24/7</h3>
+            <h3>Noticia</h3>
             <p>Acceso a atención médica en cualquier momento del día.</p>
+            <a href="#" className="btn1">
+            Entrar
+          </a>
           </div>
           <div className="service-item">
-            <Image src="" alt="Servicio 2"></Image>
-            <h3>Especialistas</h3>
+          <img
+            src="/imagenes/educacion.jpg"
+            width={500}
+            height={500}
+            alt="Servicio 1"
+          ></img>
+            <h3>Educacion </h3>
             <p>Los mejores especialistas a tu disposición.</p>
+            <a href="#" className="btn1">
+            Entrar
+          </a>
           </div>
           <div className="service-item">
-            <Image src="" alt="Servicio 3"></Image>
-            <h3>Consulta en Línea</h3>
+          <img
+            src="/imagenes/mapa.jpg"
+            width={500}
+            height={500}
+            alt="Servicio 1"
+          ></img>
+            <h3>Mapa</h3>
             <p>Realiza tus consultas desde la comodidad de tu hogar.</p>
+            <a href="#" className="btn1">
+            Entrar
+          </a>
           </div>
         </section>
       </section>
 
-      <footer>
-        <p>&copy; 2024 SMILE Clinic. Todos los derechos reservados.</p>
-        <p>
-          <a href="#">Política de Privacidad</a> |
-          <a href="#">Términos de Servicio</a>
-          
-        </p>
-        
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section about">
+            <h3>DOCLINK</h3>
+            <p>
+              Brindando atención médica de calidad en línea, donde y cuando la
+              necesites.
+            </p>
+            <div className="social-icons">
+              <a href="#">
+               
+              </a>
+              <a href="#">
+              
+              </a>
+              <a href="#">
+             
+              </a>
+              <a href="#">
+               
+              </a>
+            </div>
+          </div>
+          <div className="footer-section links">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+              <li>
+                <a href="#">Política de Privacidad</a>
+              </li>
+              <li>
+                <a href="#">Términos de Servicio</a>
+              </li>
+              <li>
+                <a href="#">Contacto</a>
+              </li>
+              <li>
+                <a href="#">FAQ</a>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-section contact">
+            <h4>Contáctanos</h4>
+            <p>Email: info@smileclinic.com</p>
+            <p>Teléfono: +1 234 567 890</p>
+            <p>Dirección: Calle Falsa 123, Ciudad</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2024 DOCLINK. Todos los derechos reservados.</p>
+        </div>
       </footer>
     </main>
   );

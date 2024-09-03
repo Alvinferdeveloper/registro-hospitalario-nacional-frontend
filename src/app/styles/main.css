@@ -8,7 +8,7 @@ body {
 }
 
 .header {
-    /*position: fixed;  Fija la barra de navegación en la parte superior */
+    position: fixed;  /* Fija la barra de navegación en la parte superior */
     background-color: #0e2134;
     top: 0;
     left: 0; /* Asegura que esté en la parte superior */
@@ -82,6 +82,7 @@ height: 100vh;
 position: relative;
 text-align: center;
 overflow: hidden; /* Asegura que el degradado cubra el área deseada */
+margin-top: 80px;
 }
 
 .hero::after {
@@ -142,6 +143,24 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
 .btn:hover {
     transform: scale(1.05);
 }
+.btn1 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0e2134;
+    color: #fff;
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.btn1:hover {
+    transform: scale(1.05);
+}
 
 .doctor-container {
     position: relative;
@@ -154,6 +173,9 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
     position: relative;
     width: 100%;
     height: auto;
+    left: 40px;
+    bottom: 50px;
+
 }
 
 .doctor img {
@@ -198,9 +220,12 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
 }
 
 .service-item img {
-    width: 100px;
-    height: 100px;
+    width: 100%; /* La imagen ocupará todo el ancho del contenedor */
+    height: 150px; /* Altura fija para las imágenes */
     margin-bottom: 15px;
+    object-fit: cover; /* La imagen cubrirá todo el contenedor sin distorsión */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    object-position: center; /* Centra la imagen si sobra espacio */
 }
 
 .service-item h3 {
@@ -214,29 +239,65 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
     color: #333;
 }
 
-footer {
+
+
+.footer {
     background-color: #0e2134;
     color: #fff;
-    padding: 20px;
+    padding: 40px 0;
     text-align: center;
-    animation: fadeInUp 1.5s ease-out; /* Animación de entrada */
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-footer a {
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    margin: 20px;
+    flex: 1;
+  }
+  
+  .footer-section h3, .footer-section h4 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
+  
+  .footer-section p, .footer-section a, .footer-section ul {
+    font-size: 1em;
+    line-height: 1.8;
+  }
+  
+  .footer-section a {
     color: #fff;
     text-decoration: none;
-    margin: 0 5px;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: #f4f4f4;
-}
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section a:hover {
+    color: #00bcd4;
+  }
+  
+  .social-icons a {
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #00bcd4;
+  }
+  
+  .footer-bottom {
+    margin-top: 30px;
+    border-top: 1px solid #555;
+    padding-top: 20px;
+    font-size: 0.9em;
+  }
+  
 
 @keyframes fadeInUp {
     from {
