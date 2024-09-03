@@ -15,3 +15,8 @@ export const userFormRegisterSchema = yup.object({
     password:yup.string().required('Contraseña requerida').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#])[A-Za-z\d@$!%*?&.#]{8,}$/,"La contrasena es muy debil"),
     birthDate:yup.date().required('La fecha es requerida')
 })
+
+export const userLoginSchema = yup.object({
+    userName: yup.string().required('Usuario requerido'),
+    password:yup.string().required('Contraseña requerida').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#])[A-Za-z\d@$!%*?&.#]{8,}$/,"La contrasena es Invalida"),
+})

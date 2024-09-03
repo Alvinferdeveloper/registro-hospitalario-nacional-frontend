@@ -14,3 +14,8 @@ export interface UserRegisterInputs {
     birthDate: Date;
     maritalStatus: string;
 }
+
+export interface UserLoginInputs {
+    userName: string;
+    password: string;
+}
