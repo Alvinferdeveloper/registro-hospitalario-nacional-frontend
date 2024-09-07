@@ -7,15 +7,15 @@ import { useState } from 'react';
 interface Error {
     unauthorized: string;
 }
-export default function useLogin(){
+export default function useLogin(path: string){
     const [error, setError] = useState<Error>();
     const [loading, setLoading] = useState<boolean>(false);
     const router = useRouter();
     const Login = async (credentials:{userName: string, password:string })=>{
-        console.log(credentials)
+        console.log(credentials, path)
        try{
         setLoading(true);
-        await axios.post('/auth/login', {
+        await axios.post(path, {
             ...credentials,
         })
         setLoading(false);

@@ -19,3 +19,8 @@ export interface UserLoginInputs {
     userName: string;
     password: string;
 }
+
+export interface HealthCarerLoginInputs {
+    userName: string;
+    password: string;
+}

@@ -20,3 +20,8 @@ export const userLoginSchema = yup.object({
     userName: yup.string().required('Usuario requerido'),
     password:yup.string().required('Contraseña requerida').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#])[A-Za-z\d@$!%*?&.#]{8,}$/,"La contrasena es Invalida"),
 })
+
+export const healthCarerLoginSchema = yup.object({
+    userName: yup.string().required('Usuario requerido'),
+    password:yup.string().required('Contraseña requerida').min(8),
+})

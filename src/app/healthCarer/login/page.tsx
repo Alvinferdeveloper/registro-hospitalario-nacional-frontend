@@ -1,22 +1,21 @@
 "use client"
 import { Input, Button, CircularProgress } from "@nextui-org/react";
 import { useForm, SubmitHandler } from "react-hook-form"
-import { UserLoginInputs } from "@/app/types/types";
-import { userLoginSchema } from "@/app/utils/validationSchemas";
+import { HealthCarerLoginInputs } from "@/app/types/types";
+import { healthCarerLoginSchema } from "@/app/utils/validationSchemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useLogin from "@/app/Hooks/user/useLogin";
 
-export default function UserLogin() {
-    const { Login, error, loading} = useLogin('/auth/login');
+export default function HealthCarerLogin(){
+    const { Login, error, loading} = useLogin('/auth/healthcarerlogin');
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<UserLoginInputs>({
-        resolver: yupResolver(userLoginSchema)
+    } = useForm<HealthCarerLoginInputs>({
+        resolver: yupResolver(healthCarerLoginSchema)
     })
-
-    const onSubmit: SubmitHandler<UserLoginInputs> = (data) => Login(data);
+    const onSubmit: SubmitHandler<HealthCarerLoginInputs> = (data) => Login(data);
     return (
         <div className=" w-[100vw] h-screen flex justify-center md:h-screen items-center flex-col">
 
@@ -27,8 +26,8 @@ export default function UserLogin() {
                     type="text"
                     color="default"
                     className="w-[70%]  text-black"
-                    label="Correo, cedula, partida de nacimiento"
-                    placeholder="Ingrese su usuario"
+                    label="Cedula"
+                    placeholder="Ingrese su cedula"
                     isInvalid={errors.userName ? true : false}
                     errorMessage={errors.userName?.message}
                     classNames={{
