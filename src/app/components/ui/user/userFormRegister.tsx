@@ -1,13 +1,13 @@
 "use client"
 import { Input, DatePicker, RadioGroup, Radio, Select, SelectItem, Button } from "@nextui-org/react";
 import { useForm, SubmitHandler } from "react-hook-form"
-import { userFormRegisterSchema } from "../utils/validationSchemas";
+import { userFormRegisterSchema } from "@/app/utils/validationSchemas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { bloodTypes, maritalStatus } from "../constants/inputConstants";
-import useRegister from "../Hooks/user/useRegister";
+import { bloodTypes, maritalStatus } from "@/app/constants/inputConstants";
+import useRegister from "@/app/Hooks/user/useRegister";
 import { CalendarDate } from '@internationalized/date'
 import { CircularProgress } from "@nextui-org/react";
-import { UserRegisterInputs } from "../types/types";
+import { UserRegisterInputs } from "@/app/types/types";
 import './../styles/userFormRegister.css';
 interface Departament {
     id: number;

@@ -1,4 +1,4 @@
-import UserFormRegister from "@/app/components/userFormRegister";
+import UserFormRegister from "@/app/components/ui/user/userFormRegister";
 import { supabase } from "@/app/libs/supabaseClient";
 
 interface Departament{
