@@ -8,7 +8,7 @@ import useRegister from "@/app/Hooks/user/useRegister";
 import { CalendarDate } from '@internationalized/date'
 import { CircularProgress } from "@nextui-org/react";
 import { UserRegisterInputs } from "@/app/types/types";
-import './../styles/userFormRegister.css';
+import '@/app/styles/userFormRegister.css'
 interface Departament {
     id: number;
     name: string;
