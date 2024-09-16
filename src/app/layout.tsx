@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { ThemeModeScript } from "flowbite-react";
 import './globals.css'
-
 import "@/app/styles/main.css";
 import {NextUIProvider} from "@nextui-org/react";
+import Script from "next/script";
 
 const inter = Roboto({weight: "400", subsets:['latin']});
 
@@ -19,10 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+       <head>
+        <ThemeModeScript />
+      </head>
       <body className={`${inter.className}`}>{<NextUIProvider>
         {children}
-        </NextUIProvider>}</body>
+        </NextUIProvider>}
+        <Script src="/flowbite.min.js" strategy="beforeInteractive"/>
+        </body>
     
     </html>
   );
