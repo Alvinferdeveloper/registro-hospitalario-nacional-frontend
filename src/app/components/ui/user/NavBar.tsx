@@ -1,7 +1,5 @@
 export default function NavBar() {
     return (
-
-
         <nav className="bg-white h-[60px] fixed top-0 left-0 w-screen border-gray-200 dark:bg-primary">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
