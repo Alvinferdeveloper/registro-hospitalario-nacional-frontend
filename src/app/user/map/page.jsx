@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import MapSidebarInfo from '@/app/components/mapSidebarInfo';
 
 const ubicaciones = [
   {
@@ -89,7 +90,9 @@ const defaultIcon = L.icon({
 
 export default function Map(){
   return (
-    <MapContainer center={[12.7938379, -85.2245743]} zoom={8} style={{ height: "100vh", width: "100%" }}>
+    <div className=' w-screen h-screen flex'>
+    <MapSidebarInfo/>
+    <MapContainer center={[12.7938379, -85.2245743]} zoom={8} style={{ height: "100vh", width: "80%" }}>
       <a href="https://www.flaticon.com/free-icons/hospital" title="hospital icons">Hospital icons created by juicy_fish - Flaticon</a>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -105,6 +108,7 @@ export default function Map(){
         ))
       }
     </MapContainer>
+    </div>
   );
       
 }
