@@ -15,7 +15,7 @@ export default function Home() {
           <a href="#">Especialidades</a>
           <a href="#">Horarios</a>
           <a href="#">Contacto</a>
-          <a href="#">Mi Cuenta</a>
+          <a href="#">Cuenta</a>
         </nav>
       </header>
 
@@ -27,8 +27,11 @@ export default function Home() {
             Accede a los mejores servicios de la red médica online. Estaremos
             contigo en todo el proceso de agendamiento.
           </p>
-          <a href="#" className="btn">
+          <a href="#" className="btnDer">
             Login
+          </a>
+          <a href="#" className="btnIzq">
+            Ingresar Personal
           </a>
         </div>
         <div className="doctor-container">
@@ -41,6 +44,7 @@ export default function Home() {
               alt="Doctor Image"
             ></Image>
           </div>
+          <div className="background-gradient"></div>
         </div>
       </section>
 
@@ -131,8 +135,14 @@ export default function Home() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section about">
-            <h3>DOCLINK</h3>
-            <p>
+          <Image
+              src="/imagenes/DOCLINK2.png"
+              className="IMG"
+              width={500}
+              height={500}
+              alt="logo"
+            ></Image>
+            <p className="inf">
               Brindando atención médica de calidad en línea, donde y cuando la
               necesites.
             </p>
@@ -170,7 +180,7 @@ export default function Home() {
           </div>
           <div className="footer-section contact">
             <h4>Contáctanos</h4>
-            <p>Email: info@smileclinic.com</p>
+            <p>Email: info@DocLink.com</p>
             <p>Teléfono: +1 234 567 890</p>
             <p>Dirección: Calle Falsa 123, Ciudad</p>
           </div>

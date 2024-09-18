@@ -23,7 +23,7 @@ body {
 }
 
 .header img {
-    height: 120px;
+    height: 180px;
     width: 200px;
     left: 50px;
     filter: drop-shadow(2px 2px 2px black);
@@ -109,23 +109,22 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
 }
 
 .hero-content h2{
-    font-size: 3rem;
+    font-size: 30px;
 }
 
 .hero h1 {
-    font-size: 3rem;
-   
+    font-size: 30px;
     margin: 0;
-    color: #167ce2;
+    color: #b3c4d5;
     font-weight: bold;
 }
 
 .hero p {
-    font-size: 2rem;
-    margin: 20px 0;
+    font-size: 25px;
+    margin: 50px 0;
 }
 
-.btn {
+.btnDer {
     display: inline-block;
     padding: 10px 20px;
     background-color: #0e2134;
@@ -140,9 +139,28 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
     transition: transform 0.3s;
 }
 
-.btn:hover {
+.btnDer:hover {
     transform: scale(1.05);
 }
+.btnIzq {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #0d0d0d;
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.btnIzq:hover {
+    transform: scale(1.05);
+}
+
 .btn1 {
     display: inline-block;
     padding: 10px 20px;
@@ -173,8 +191,8 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
     position: relative;
     width: 100%;
     height: auto;
-    left: 40px;
-    bottom: 50px;
+    left: 60px;
+    bottom: 60px;
 
 }
 
@@ -297,6 +315,20 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
     padding-top: 20px;
     font-size: 0.9em;
   }
+  .footer img{
+
+ 
+        height: 180px;
+        width: 200px;
+        filter: drop-shadow(2px 2px 2px black);
+        margin-left: 100px;
+        position: relative;  /* Cambiado a relative para poder ajustar */
+        top: -60px;  /* Sube el logo 20px */
+    }
+   .footer p.inf{
+    position: relative;  /* Cambiado a relative para poder ajustar */
+    top: -80px;  /* Sube el logo 20px */
+   }
   
 
 @keyframes fadeInUp {
@@ -343,8 +375,11 @@ pointer-events: none; /* Permite que los clics pasen a través del degradado */
 
 @media (max-width: 767px) {
     .nav-links {
-        flex-direction: column;
+        flex-direction:row;
         gap: 10px;
         align-items: center;
     }
 }
+
+
+
