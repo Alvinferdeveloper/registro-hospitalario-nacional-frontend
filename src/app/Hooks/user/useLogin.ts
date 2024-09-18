@@ -1,7 +1,8 @@
-import axios from '@/app/libs/axiosConfig'
+import axios from '@/app/libs/axiosClientConfig'
 import { useRouter } from 'next/navigation';
 import { AxiosError } from 'axios';
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 // Interfaz para la respuesta de error del servidor
 interface Error {
@@ -18,7 +19,7 @@ export default function useLogin(path: string){
             ...credentials,
         })
         setLoading(false);
-        localStorage.setItem('token',res.data.token)
+        Cookies.set("access_token", res.data.token ,{ expires:1 })
         router.push('/user/map');
        }
        catch(err){

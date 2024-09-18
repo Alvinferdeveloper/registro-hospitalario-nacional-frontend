@@ -1,8 +1,9 @@
-import axios from '@/app/libs/axiosConfig'
+import axios from '@/app/libs/axiosClientConfig'
 import { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { UserRegisterInputs } from '@/app/types/types';
+import Cookies from 'js-cookie';
 
 interface Error {
     email?: string;
@@ -28,7 +29,7 @@ export default function useRegister() {
     const register = async (body: UserRegisterInputs) => {
         try {
             setLoading(true)
-            await axios.post('/auth/register', {
+            const res = await axios.post('/auth/register', {
                 ...body,
                 departament_id: body.departament,
                 blood_type: body.bloodType,
@@ -36,6 +37,7 @@ export default function useRegister() {
                 phone_number: body.phoneNumber
             })
             setLoading(false);
+            Cookies.set("access_token", res.data.token, { expires:1})
             router.push('/user/map');
         } catch (err) {
             setLoading(false);
