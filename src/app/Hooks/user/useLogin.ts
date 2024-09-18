@@ -12,13 +12,13 @@ export default function useLogin(path: string){
     const [loading, setLoading] = useState<boolean>(false);
     const router = useRouter();
     const Login = async (credentials:{userName: string, password:string })=>{
-        console.log(credentials, path)
        try{
         setLoading(true);
-        await axios.post(path, {
+        const res = await axios.post(path, {
             ...credentials,
         })
         setLoading(false);
+        localStorage.setItem('token',res.data.token)
         router.push('/user/map');
        }
        catch(err){
