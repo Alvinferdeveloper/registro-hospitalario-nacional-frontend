@@ -1,6 +1,8 @@
 "use client"
+import { HealthCarer, Patient } from '@/app/types/responseTypes'
 import { UserIcon, GraduationCapIcon} from 'lucide-react'
-export default function ConsultationFormHeader({children, data}: { children: React.ReactNode, data:any}){
+export default function ConsultationFormHeader({children, data:{ patient, healthCarer}}: { children: React.ReactNode, data:{ patient: Patient, healthCarer: HealthCarer}}){
+   const healthCarerTypeAbbreviation = healthCarer.type == "DOCTOR" ? "Dr"  : "Enf"
     return (
         <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -13,15 +15,15 @@ export default function ConsultationFormHeader({children, data}: { children: Rea
                     <div className="flex items-center space-x-3 ">
                       <UserIcon className="h-10 w-10 text-cyan-500" />
                       <div>
-                        <h2 className="text-2xl font-bold text-gray-900">{data.patient.name}</h2>
-                        <p className="text-gray-500">ID: 12345678</p>
+                        <h2 className="text-2xl font-bold text-gray-900">{patient.name} {patient.lastName}</h2>
+                        <p className="text-gray-500 text-sm">Phone: {patient.phone_number}</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
                       <GraduationCapIcon className="h-10 w-10 text-cyan-500" />
                       <div>
-                        <h3 className="text-xl font-semibold text-gray-900">Dra. {data.patient.name}</h3>
-                        <p className="text-gray-500">Cardiología</p>
+                        <h3 className="text-xl font-semibold text-gray-900">{healthCarerTypeAbbreviation}. {healthCarer.name}</h3>
+                        <p className="text-gray-500">{healthCarer.area}</p>
                       </div>
                     </div>
                   </div>

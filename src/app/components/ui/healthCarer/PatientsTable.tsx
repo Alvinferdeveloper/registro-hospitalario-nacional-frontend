@@ -3,26 +3,7 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, 
 import { EyeIcon } from "../icons/EyeIcon";
 import { EditIcon } from "../icons/EditIcon";
 import Link from "next/link";
-
-interface Patient {
-    id: string;
-    name: string;
-    lastName: string;
-    identification: string;
-    birth_certificate?: string;
-    blood_type: string;
-    marital_status: string;
-    gender: string;
-    address_id: number;
-    healthcare_system_id?: number;
-    phone_number: string;
-    profile_photo: string;
-    birthdate: string;
-    role: string;
-    email: string;
-    created_at: string;
-    updated_at: string;
-}
+import { Patient } from "@/app/types/responseTypes";
 const columns = [
     { uid: "name", name: "Nombres" },
     { uid: "cedula", name: "Cedula" },
