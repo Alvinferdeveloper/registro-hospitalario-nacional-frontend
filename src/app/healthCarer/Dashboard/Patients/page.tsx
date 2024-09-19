@@ -1,7 +1,8 @@
 import PatientsTable from '@/app/components/ui/healthCarer/PatientsTable';
 import PatientsTableSkeleton from '@/app/components/ui/healthCarer/skeleton/PatientsTableSkeleton';
-import axios from '@/app/libs/axiosConfig'
+import axios from '@/app/libs/axiosClientConfig'
 import { Suspense } from 'react';
+import { fetchPatients } from '@/app/actions/patients';
 
 export interface Patient {
     id: string;
@@ -23,12 +24,9 @@ export interface Patient {
     updated_at: string;
 }
 
-async function fecthPatients() {
-    const res = await axios.get('/patient/getPatients');
-    return res.data;
-}
+
 export default async function Patients() {
-    const patients = await fecthPatients() as Patient[];
+    const patients = await fetchPatients() as Patient[];
     return <PatientsTable patients={patients} />
         
     
