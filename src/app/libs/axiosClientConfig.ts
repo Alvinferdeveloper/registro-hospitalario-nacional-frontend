@@ -8,7 +8,7 @@ const instance = axios.create({
   timeout: 20000, // Tiempo máximo de espera para una petición
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': Cookies.get('access_token') ? Cookies.get('access_token') : null,
+    'Authorization': Cookies.get('access_token') ? 'Bearer '+ Cookies.get('access_token') : null,
   },
 });
 

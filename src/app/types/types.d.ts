@@ -24,3 +24,10 @@ export interface HealthCarerLoginInputs {
     userName: string;
     password: string;
 }
+
+export interface Consultation {
+    patientId: string;
+    summary: string;
+    diagnosis: string;
+    plan:string;
+}

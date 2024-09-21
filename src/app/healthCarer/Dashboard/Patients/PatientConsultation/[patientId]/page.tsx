@@ -7,7 +7,7 @@ export default async function PatientConsultation({ params }: { params: { patien
   const data = await fetchPatientByHealhCarer(params.patientId) as { patient: Patient, healthCarer: HealthCarer};
   return (
     <ConsultationFormHeader data={data} >
-      <ConsultationForm />
+      <ConsultationForm patientId = { params.patientId} />
     </ConsultationFormHeader>
 
   )

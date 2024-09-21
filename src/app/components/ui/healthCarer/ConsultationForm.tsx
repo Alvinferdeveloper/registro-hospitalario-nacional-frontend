@@ -1,14 +1,19 @@
 "use client"
+import useInsertConsultation from "@/app/Hooks/user/useInsertConsultation";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-export default function ConsultationForm(){
+import { CircularProgress } from "@nextui-org/react";
+
+export default function ConsultationForm({patientId}:{patientId:string}){
+  const { loading, insertConsultation, error } = useInsertConsultation(); 
     const [summary, setSummary] = useState('');
     const [diagnosis, setDiagnosis] = useState('');
     const [plan, setPlan] = useState('');
     
     const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault()
+      e.preventDefault();
+      insertConsultation({summary, diagnosis, plan, patientId})
     }
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -31,6 +36,19 @@ export default function ConsultationForm(){
                     >
                       Guardar Registro
                     </button>
+                    
+                  </div>
+                  <div className=" w-full flex flex-col items-center">
+                  {
+                    loading && (
+                        <CircularProgress aria-label="Loading..." />
+                    )
+                }
+                {
+                    error && (
+                        <p className=" text-red-600">{error.insertionError}</p>
+                    )
+                }
                   </div>
                 </form>
     )
