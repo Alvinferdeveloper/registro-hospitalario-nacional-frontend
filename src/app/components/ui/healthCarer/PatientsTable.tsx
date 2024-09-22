@@ -45,11 +45,13 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
                         </TableCell>
                         <TableCell>
                             <div className="relative flex items-center gap-5">
+                                <Link  href={`/healthCarer/Dashboard/Patients/Consultation/${patient.id}`}>
                                 <Tooltip content="Ver Expedientes" className=" text-black">
                                     <span className="text-lg text-default cursor-pointer active:opacity-50">
                                         <EyeIcon />
                                     </span>
                                 </Tooltip>
+                                </Link>
                                 <Link href={`/healthCarer/Dashboard/Patients/PatientConsultation/${patient.id}`}>
                                     <Tooltip content="Nuevo Expediente " className=" text-black">
                                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">

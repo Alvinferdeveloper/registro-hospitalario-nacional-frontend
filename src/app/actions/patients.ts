@@ -19,3 +19,13 @@ export async function fetchPatientByHealhCarer(patientId: string){
     } );
     return res.data;
 }
+
+
+export async function fetchConsultations(patientId: string){
+    const res = await axios.get(`/consultation/getConsultations/${patientId}`, {
+        headers: {
+            Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+        }
+    } );
+    return res.data;
+}

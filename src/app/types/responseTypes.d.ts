@@ -30,4 +30,16 @@ export interface Patient {
     phone_number: string;
     email:string;
  }
+
+ inte
+ export interface ConsultationResponse {
+   id: string;
+   patientId: string;
+   summary: string;
+   diagnosis: string;
+   plan:string;
+   date:string;
+   health_carer: HealthCarer;
+   patient:Patient;
+}
  
