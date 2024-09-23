@@ -29,3 +29,13 @@ export async function fetchConsultations(patientId: string){
     } );
     return res.data;
 }
+
+
+export async function fetchPatientConsultations(){
+    const res = await axios.get('/consultation/getPatientConsultations', {
+        headers: {
+            Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+        }
+    } );
+    return res.data;
+}
