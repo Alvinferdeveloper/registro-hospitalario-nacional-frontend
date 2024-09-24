@@ -33,7 +33,7 @@ export async function fetchPatientByHealhCarer(patientId: string){
 
 export async function fetchConsultations(patientId: string){
    const data = await catchAsync(async()=>{
-    const res = await axios.get(`/consultation/getConsultations/${patientId}`, {
+    const res = await axios.get(`/consultation/getConsultationsByHealthCarer/${patientId}`, {
         headers: {
             Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
         }
@@ -46,7 +46,7 @@ export async function fetchConsultations(patientId: string){
 
 export async function fetchPatientConsultations(){
    const data = await catchAsync(async()=>{
-    const res = await axios.get('/consultation/getPatientConsultations', {
+    const res = await axios.get('/consultation/getConsultationsByPatient', {
         headers: {
             Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
         }
