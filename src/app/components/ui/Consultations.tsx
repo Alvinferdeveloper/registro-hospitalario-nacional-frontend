@@ -1,8 +1,9 @@
 import { CalendarIcon, StethoscopeIcon, FileTextIcon } from "lucide-react"
 import { ConsultationResponse } from "@/app/types/responseTypes"
-export default async function Consultations({ consultations }: { consultations: ConsultationResponse[]}) {
+export default async function Consultations({ consultations, patient }: { consultations: ConsultationResponse[], patient: boolean}) {
+      const containerMt = patient ? 'mt-[60px]' : '';
       return (
-        <div className="container mx-auto p-4 mt-[60px]">
+        <div className={`container mx-auto p-4 ${containerMt}`}>
           <h1 className="text-3xl font-bold mb-6 text-gray-800">Lista de Expedientes</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {consultations.map((consultation) => (

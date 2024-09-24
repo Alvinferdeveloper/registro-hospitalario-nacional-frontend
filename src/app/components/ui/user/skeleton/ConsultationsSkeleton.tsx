@@ -1,6 +1,6 @@
 export default function ConsultationsSkeleton() {
     return (
-        <div className="min-h-screen bg-gray-100 p-4">
+        <div className="min-h-screen bg-gray-100 p-4 mt-9">
             <div className="container mx-auto">
                 <div className="h-8 w-48 bg-gray-300 rounded mb-6 animate-pulse"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

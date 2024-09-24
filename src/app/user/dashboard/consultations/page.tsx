@@ -4,5 +4,5 @@ import { ConsultationResponse } from "@/app/types/responseTypes";
 
 export default async function UserConsultations(){
     const consultations = await fetchPatientConsultations() as ConsultationResponse[];
-    return <Consultations consultations={consultations}/>
+    return <Consultations consultations={consultations} patient={true}/>
 }
