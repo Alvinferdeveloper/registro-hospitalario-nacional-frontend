@@ -8,7 +8,7 @@ import Cookies from 'js-cookie';
 interface Error {
     unauthorized: string;
 }
-export default function useLogin(path: string){
+export default function useLogin(path: string, redirectUrl: string){
     const [error, setError] = useState<Error>();
     const [loading, setLoading] = useState<boolean>(false);
     const router = useRouter();
@@ -20,7 +20,7 @@ export default function useLogin(path: string){
         })
         setLoading(false);
         Cookies.set("access_token", res.data.token ,{ expires:1 })
-        router.push('/user/map');
+        router.push(redirectUrl);
        }
        catch(err){
         setLoading(false);

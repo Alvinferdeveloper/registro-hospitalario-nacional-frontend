@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useLogin from "@/app/Hooks/user/useLogin";
 
 export default function HealthCarerLogin(){
-    const { Login, error, loading} = useLogin('/auth/healthcarerlogin');
+    const { Login, error, loading} = useLogin('/auth/healthcarerlogin', '/healthCarer/Dashboard/Patients');
     const {
         register,
         handleSubmit,
