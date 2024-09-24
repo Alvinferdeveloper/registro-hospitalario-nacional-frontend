@@ -68,3 +68,17 @@ export async function fetchConsultationByHealthCarer(consultationId: string){
        return data;
 }
 
+export async function fetchConsultationByPatient(consultationId: string){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get(`/consultation/getConsultationDetailsByPatient/${consultationId}`, {
+            headers: {
+                Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+            }
+        } );
+        return res.data;
+       }, '/user/login');
+       return data;
+}
+
+
+

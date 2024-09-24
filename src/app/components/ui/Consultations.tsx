@@ -2,6 +2,7 @@ import { CalendarIcon, StethoscopeIcon, FileTextIcon } from "lucide-react"
 import { ConsultationResponse } from "@/app/types/responseTypes"
 export default async function Consultations({ consultations, patient }: { consultations: ConsultationResponse[], patient: boolean}) {
       const containerMt = patient ? 'mt-[60px]' : '';
+      const patientDetailsUrl = patient ? '/user/dashboard/consultationDetails' : '/healthCarer/Dashboard/ConsultationDetails';
       return (
         <div className={`container mx-auto p-4 ${containerMt}`}>
           <h1 className="text-3xl font-bold mb-6 text-gray-800">Lista de Expedientes</h1>
@@ -29,7 +30,7 @@ export default async function Consultations({ consultations, patient }: { consul
                   </div>
                 </div>
                 <div className="bg-gray-50 px-6 py-3">
-                  <a href={`/healthCarer/Dashboard/ConsultationDetails/${consultation.id}`}>
+                  <a href={`${patientDetailsUrl}/${consultation.id}`}>
                   <button className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-300">
                     Ver detalles
                   </button>
