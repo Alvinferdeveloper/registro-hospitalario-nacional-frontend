@@ -29,9 +29,11 @@ export default async function Consultations({ consultations, patient }: { consul
                   </div>
                 </div>
                 <div className="bg-gray-50 px-6 py-3">
+                  <a href={`/healthCarer/Dashboard/ConsultationDetails/${consultation.id}`}>
                   <button className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-300">
                     Ver detalles
                   </button>
+                  </a>
                 </div>
               </div>
             ))}

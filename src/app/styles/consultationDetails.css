@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f94d;
+    color: black;
+}
+
+.container {
+    width: 60%;
+    margin: 10px auto; /* Reducir el margen superior */
+    background-color: #ffffffa6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    
+}
+
+header {
+    margin: 0;
+    padding: 5px 0;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Dos columnas: una para el logo y otra para el título */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo {
+    justify-self: start; /* Asegura que el logo esté a la izquierda */
+}
+
+.logo img {
+    height: auto;
+    max-width: 100%;
+    width: 150px; /* Tamaño base del logo */
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        width: 120px; /* Reducir tamaño del logo en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 100px; /* Ajustar aún más el logo en pantallas pequeñas */
+    }
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+    justify-self: center; /* El título se mantiene centrado */
+    width: 80%; /* Se asegura que el título ocupe todo el espacio */
+}
+
+@media (max-width: 480px) {
+    header {
+        grid-template-columns: 1fr; /* Para pantallas pequeñas, el logo y el título estarán en filas */
+        text-align: center;
+    }
+    
+    .logo {
+        justify-self: center; /* En pantallas pequeñas, centramos el logo también */
+    }
+}
+
+
+.header-info p {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    justify-self: center; /* El título se mantiene centrado */
+    width: 80%; /* Se asegura que el título ocupe todo el espacio */
+  
+}
+
+h2 {
+    font-size: 22px;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.patient-info {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una línea */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 20px; /* Espacio entre elementos, puedes ajustar este valor según necesites */
+}
+
+.patient-info h2 {
+    width: 100%; /* Asegura que el título ocupe toda la anchura del contenedor */
+    text-align: center; /* Centra el título horizontalmente */
+}
+
+.patient-info p {
+    margin: 0; /* Elimina el margen predeterminado */
+    font-size: 16px;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido dentro del <p> */
+}
+
+.patient-info strong {
+    margin-right: 10px; /* Espacio entre el texto en negrita y el contenido */
+}
+
+
+.diagnostic-info textarea {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"], .form-group input[type="date"] {
+    width: 60%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-guardar {
+    background-color: #0e2134;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+}

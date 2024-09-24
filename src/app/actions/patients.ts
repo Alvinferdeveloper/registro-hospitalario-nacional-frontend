@@ -55,3 +55,16 @@ export async function fetchPatientConsultations(){
    }, '/user/login');
    return data;
 }
+
+export async function fetchConsultationByHealthCarer(consultationId: string){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get(`/consultation/getConsultationDetailsByHealthCarer/${consultationId}`, {
+            headers: {
+                Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+            }
+        } );
+        return res.data;
+       }, '/user/login');
+       return data;
+}
+
