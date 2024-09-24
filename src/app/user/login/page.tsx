@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useLogin from "@/app/Hooks/user/useLogin";
 
 export default function UserLogin() {
-    const { Login, error, loading} = useLogin('/auth/login', 'user/Dashboard/Consultations');
+    const { Login, error, loading} = useLogin('/auth/login', '/user/dashboard/consultations');
     const {
         register,
         handleSubmit,
