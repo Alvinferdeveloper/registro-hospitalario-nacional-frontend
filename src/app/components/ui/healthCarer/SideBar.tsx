@@ -76,7 +76,7 @@ export default function SideBar({ children }: { children: any }) {
                     </ul>
                 </div>
             </aside>
-            <div className="p-4 sm:ml-64">{children}</div>
+            <div className="p-4 sm:ml-64 min-h-screen">{children}</div>
 
 
         </>

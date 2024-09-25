@@ -4,6 +4,7 @@ import { EyeIcon } from "../icons/EyeIcon";
 import { EditIcon } from "../icons/EditIcon";
 import Link from "next/link";
 import { Patient } from "@/app/types/responseTypes";
+import { Syringe } from "lucide-react";
 const columns = [
     { uid: "name", name: "Nombres" },
     { uid: "cedula", name: "Cedula" },
@@ -56,6 +57,13 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
                                     <Tooltip content="Nuevo Expediente " className=" text-black">
                                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                                             <EditIcon />
+                                        </span>
+                                    </Tooltip>
+                                </Link>
+                                <Link href={{pathname:`/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`, query:{name:`${patient.name} ${patient.lastName}`}}}>
+                                    <Tooltip content="Nueva Vacuna " className=" text-black">
+                                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                                            <Syringe/>
                                         </span>
                                     </Tooltip>
                                 </Link>

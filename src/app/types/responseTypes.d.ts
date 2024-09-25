@@ -31,7 +31,7 @@ export interface Patient {
     email:string;
  }
 
- inte
+
  export interface ConsultationResponse {
    id: string;
    patientId: string;
@@ -41,5 +41,12 @@ export interface Patient {
    date:string;
    health_carer: HealthCarer;
    patient:Patient;
+}
+
+export interface VaccinesResponse {
+   id: number;
+   name: string;
+   doses:number;
+   healthCare_system_id: string;
 }
  

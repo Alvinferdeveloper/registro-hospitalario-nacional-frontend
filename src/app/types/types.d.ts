@@ -31,3 +31,10 @@ export interface Consultation {
     diagnosis: string;
     plan:string;
 }
+
+export interface Vaccination {
+    patientId: string;
+    vaccineId:number;
+    dose:string;
+    vaccineCode:string;
+}

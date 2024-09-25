@@ -80,5 +80,18 @@ export async function fetchConsultationByPatient(consultationId: string){
        return data;
 }
 
+export async function fetchHealthcareSystemVaccines(){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get('/vaccines/getHealthcareSystemVaccines', {
+            headers: {
+                Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+            }
+        } );
+        return res.data;
+       }, '/healthCarer/login');
+       return data;
+}
+
+
 
 
