@@ -42,9 +42,11 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
             <Input
                 type="text"
                 className="w-[80%] md:w-[200px]"
-                variant={"underlined"}
+                variant="underlined"
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Nombres"
-                placeholder="Ingrese sus nombres"
                 isInvalid={errors.name ? true : false}
                 errorMessage={errors.name?.message}
                 {...register("name")}
@@ -53,8 +55,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="text"
                 className="w-[80%] md:w-[200px]"
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Apellidos"
-                placeholder="Ingrese sus apellidos"
                 isInvalid={errors.lastName ? true : false}
                 errorMessage={errors.lastName?.message}
                 {...register("lastName")}
@@ -63,8 +67,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="text"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Cedula"
-                placeholder="Ingrese cedula o partida de nacimiento"
                 isInvalid={errors.identification || registerError?.email ? true : false}
                 errorMessage={errors.identification?.message || registerError?.identification}
                 {...register("identification")}
@@ -161,8 +167,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="text"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Municipio"
-                placeholder="Ingrese su municipio"
                 isInvalid={errors.municipio ? true : false}
                 errorMessage={errors.municipio?.message}
                 {...register("municipio")}
@@ -171,8 +179,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="text"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Ciudad"
-                placeholder="Ingrese su ciudad"
                 isInvalid={errors.city ? true : false}
                 errorMessage={errors.city?.message}
                 {...register("city")}
@@ -181,8 +191,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="text"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Direccion"
-                placeholder="Ingrese su direccion"
                 isInvalid={errors.address ? true : false}
                 errorMessage={errors.address?.message}
                 {...register("address")}
@@ -192,13 +204,16 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="text"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Telefono"
-                placeholder="Ingrese su telefono"
                 isInvalid={errors.phoneNumber ? true : false}
                 errorMessage={errors.phoneNumber?.message}
                 {...register("phoneNumber")}
 
             />
+            
 
             <DatePicker label="Fecha de nacimiento" name="birthDate" className="w-[80%] md:w-[200px] text-white"
 
@@ -218,8 +233,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="email"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Email"
-                placeholder="Ingrese su email"
                 isInvalid={errors.email || registerError?.email ? true : false}
                 errorMessage={errors.email?.message || registerError?.email}
                 {...register("email")}
@@ -229,8 +246,10 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                 type="password"
                 className="w-[80%] md:w-[200px] "
                 variant={"underlined"}
+                classNames={{
+                    input:" border-none focus:outline-none focus:ring-0"
+                }}
                 label="Contraseña"
-                placeholder="Ingrese su contraseña"
                 isInvalid={errors.password ? true : false}
                 errorMessage={errors.password?.message}
                 {...register("password")}

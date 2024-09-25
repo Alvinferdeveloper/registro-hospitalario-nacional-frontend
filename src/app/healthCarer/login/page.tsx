@@ -31,7 +31,8 @@ export default function HealthCarerLogin(){
                     isInvalid={errors.userName ? true : false}
                     errorMessage={errors.userName?.message}
                     classNames={{
-                        errorMessage: 'text-medium'
+                        errorMessage: 'text-medium',
+                        input:" border-none focus:outline-none focus:ring-0"
                     }}
                     {...register("userName")}
                 />
@@ -43,7 +44,8 @@ export default function HealthCarerLogin(){
                     isInvalid={errors.password ? true : false}
                     errorMessage={errors.password?.message}
                     classNames={{
-                        errorMessage: 'text-medium'
+                        errorMessage: 'text-medium',
+                        input:" border-none focus:outline-none focus:ring-0"
                     }}
                     {...register("password")}
                 />

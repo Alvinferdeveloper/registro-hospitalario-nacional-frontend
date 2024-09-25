@@ -26,13 +26,14 @@ export default function UserLogin() {
                 <Input
                     type="text"
                     color="default"
-                    className="w-[70%]  text-black"
+                    className="w-[70%] text-black"
                     label="Correo, cedula, partida de nacimiento"
                     placeholder="Ingrese su usuario"
                     isInvalid={errors.userName ? true : false}
                     errorMessage={errors.userName?.message}
                     classNames={{
-                        errorMessage: 'text-medium'
+                        errorMessage: 'text-medium',
+                        input:" border-none focus:outline-none focus:ring-0"
                     }}
                     {...register("userName")}
                 />
@@ -44,7 +45,8 @@ export default function UserLogin() {
                     isInvalid={errors.password ? true : false}
                     errorMessage={errors.password?.message}
                     classNames={{
-                        errorMessage: 'text-medium'
+                        errorMessage: 'text-medium',
+                        input:" border-none focus:outline-none focus:ring-0"
                     }}
                     {...register("password")}
                 />
