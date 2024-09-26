@@ -49,4 +49,15 @@ export interface VaccinesResponse {
    doses:number;
    healthCare_system_id: string;
 }
+
+export interface vaccinationResponse{
+   id: number;
+   date: string;
+   name:string;
+   doses:number;
+   vaccine_code:string;
+   patient:Patient;
+   healthcarer:HealthCarer;
+   vaccine:VaccinesResponse;
+}
  

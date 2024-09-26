@@ -92,6 +92,19 @@ export async function fetchHealthcareSystemVaccines(){
        return data;
 }
 
+export async function fetchPatientVaccinationsByHealthCarer(patientId:string){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get(`/vaccinations/getVaccinationsByHealthCarer/${patientId}`, {
+            headers: {
+                Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+            }
+        } );
+        return res.data;
+       }, '/healthCarer/login');
+       return data;
+}
+
+
 
 
 

@@ -4,7 +4,7 @@ import { EyeIcon } from "../icons/EyeIcon";
 import { EditIcon } from "../icons/EditIcon";
 import Link from "next/link";
 import { Patient } from "@/app/types/responseTypes";
-import { Syringe } from "lucide-react";
+import { Syringe, View } from "lucide-react";
 const columns = [
     { uid: "name", name: "Nombres" },
     { uid: "cedula", name: "Cedula" },
@@ -46,12 +46,12 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
                         </TableCell>
                         <TableCell>
                             <div className="relative flex items-center gap-5">
-                                <Link  href={`/healthCarer/Dashboard/Patients/Consultation/${patient.id}`}>
-                                <Tooltip content="Ver Expedientes" className=" text-black">
-                                    <span className="text-lg text-default cursor-pointer active:opacity-50">
-                                        <EyeIcon />
-                                    </span>
-                                </Tooltip>
+                                <Link href={`/healthCarer/Dashboard/Patients/Consultation/${patient.id}`}>
+                                    <Tooltip content="Ver Expedientes" className=" text-black">
+                                        <span className="text-lg text-default cursor-pointer active:opacity-50">
+                                            <EyeIcon />
+                                        </span>
+                                    </Tooltip>
                                 </Link>
                                 <Link href={`/healthCarer/Dashboard/Patients/PatientConsultation/${patient.id}`}>
                                     <Tooltip content="Nuevo Expediente " className=" text-black">
@@ -60,10 +60,17 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
                                         </span>
                                     </Tooltip>
                                 </Link>
-                                <Link href={{pathname:`/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`, query:{name:`${patient.name} ${patient.lastName}`}}}>
+                                <Link href={{ pathname: `/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`, query: { name: `${patient.name} ${patient.lastName}` } }}>
                                     <Tooltip content="Nueva Vacuna " className=" text-black">
                                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                            <Syringe/>
+                                            <Syringe />
+                                        </span>
+                                    </Tooltip>
+                                </Link>
+                                <Link href={`/healthCarer/Dashboard/Vaccine/Vaccinations/${patient.id}`}>
+                                    <Tooltip content="Ver vacunas" className=" text-black">
+                                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                                            <View />
                                         </span>
                                     </Tooltip>
                                 </Link>
