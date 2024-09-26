@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -27,12 +28,12 @@ export default function Home() {
             Accede a los mejores servicios de la red médica online. Estaremos
             contigo en todo el proceso de agendamiento.
           </p>
-          <a href="#" className="btnDer">
+          <Link href="/user/login" className="btnDer">
             Login
-          </a>
-          <a href="#" className="btnIzq">
-            Ingresar Personal
-          </a>
+          </Link>
+          <Link href="/healthCarer/login" className="btnIzq">
+            Soy Doctor
+          </Link>
         </div>
         <div className="doctor-container">
           <div className="doctor">
