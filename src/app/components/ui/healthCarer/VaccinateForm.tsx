@@ -6,7 +6,7 @@ import { CircularProgress } from "@nextui-org/react";
 
 
 export default function VaccinateForm({ vaccines, patientId }: { vaccines: VaccinesResponse[], patientId: string }) {
-    const [vaccineId, setVaccineId] = useState<number>(vaccines[0].id);
+    const [vaccineId, setVaccineId] = useState<number>(vaccines[0]?.id);
     const [dose, setDose] = useState('');
     const [vaccineCode, setVaccineCode] = useState('');
     const { loading, insertVaccination, error } = useInsertVaccination();
