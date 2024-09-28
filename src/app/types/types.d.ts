@@ -37,4 +37,5 @@ export interface Vaccination {
     vaccineId:number;
     dose:string;
     vaccineCode:string;
+    address:string;
 }

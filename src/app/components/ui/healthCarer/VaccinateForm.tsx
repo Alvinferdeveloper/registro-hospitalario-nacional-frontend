@@ -9,11 +9,12 @@ export default function VaccinateForm({ vaccines, patientId }: { vaccines: Vacci
     const [vaccineId, setVaccineId] = useState<number>(vaccines[0]?.id);
     const [dose, setDose] = useState('');
     const [vaccineCode, setVaccineCode] = useState('');
+    const [address, setAddress] = useState('');
     const { loading, insertVaccination, error } = useInsertVaccination();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        insertVaccination({ vaccineId, dose, vaccineCode, patientId });
+        insertVaccination({ vaccineId, dose, vaccineCode, patientId, address });
     }
     return (
         <form className="space-y-4 text-black" onSubmit={handleSubmit}>
@@ -46,6 +47,19 @@ export default function VaccinateForm({ vaccines, patientId }: { vaccines: Vacci
                     value={vaccineCode}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Ingrese el código de la vacuna"
+                />
+            </div>
+            <div>
+                <label htmlFor="vaccine-address" className="block text-sm font-medium text-gray-700 mb-1">
+                    Direccion
+                </label>
+                <input
+                    type="text"
+                    id="vaccine-address"
+                    onChange={(e) => { setAddress(e.target.value) }}
+                    value={address}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Ingrese direccion"
                 />
             </div>
             <div>
