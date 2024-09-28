@@ -16,7 +16,7 @@ export default function Home() {
           <a href="#">Especialidades</a>
           <a href="#">Horarios</a>
           <a href="#">Contacto</a>
-          <a href="#">Cuenta</a>
+          <a href="/user/register">Registrar</a>
         </nav>
       </header>
 
