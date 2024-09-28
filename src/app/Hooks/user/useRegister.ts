@@ -33,6 +33,7 @@ export default function useRegister() {
                 ...body,
                 departament_id: body.departament,
                 blood_type: body.bloodType,
+                birthDate:`${body.birthDate.getFullYear()}-${body.birthDate.getMonth() + 1}-${body.birthDate.getDay()}`,
                 marital_status: body.maritalStatus,
                 phone_number: body.phoneNumber
             })
@@ -43,6 +44,7 @@ export default function useRegister() {
             setLoading(false);
             const axiosError = err as AxiosError;
             const errorData = axiosError.response?.data as ErrorResponseData;
+            console.log(errorData.message)
             if (axiosError.response) {
                 if (axiosError.response.status == 400) {
                     errorData.validation?.email && setError(error => ({ ...error, ['email']: 'Este email ya existe' }));
