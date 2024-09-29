@@ -3,7 +3,7 @@ export interface UserRegisterInputs {
     lastName: string;
     identification: string;
     departament: number;
-    bloodType: string;
+    bloodType?: string;
     gender: string;
     municipio: string;
     city: string;

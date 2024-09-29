@@ -25,6 +25,7 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
     } = useForm<UserRegisterInputs>({
         defaultValues: {
             gender: 'M',
+            departament:departaments[0].id
         },
         resolver: yupResolver(userFormRegisterSchema)
     })
@@ -71,7 +72,7 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                     input:" border-none focus:outline-none focus:ring-0"
                 }}
                 label="Cedula"
-                isInvalid={errors.identification || registerError?.email ? true : false}
+                isInvalid={errors.identification || registerError?.identification ? true : false}
                 errorMessage={errors.identification?.message || registerError?.identification}
                 {...register("identification")}
             />
@@ -87,6 +88,8 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                     value: "text-white"
                 }}
                 {...register('maritalStatus')}
+                isInvalid={errors.maritalStatus ? true : false}
+                errorMessage={errors.maritalStatus?.message}
                 value={maritalStatus[0]}
             >
                 {
@@ -149,8 +152,9 @@ export default function UserFormRegister({ departaments }: { departaments: Depar
                     label: "text-white",
                     value: "text-white"
                 }}
+                isInvalid={errors.departament ? true : false}
+                errorMessage={errors.departament?.message}
                 {...register("departament")}
-                value={departaments[0].name}
             >
 
                 {
