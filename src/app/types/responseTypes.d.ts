@@ -55,6 +55,7 @@ export interface vaccinationResponse{
    date: string;
    name:string;
    doses:number;
+   address:string;
    vaccine_code:string;
    patient:Patient;
    healthcarer:HealthCarer;

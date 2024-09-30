@@ -117,6 +117,19 @@ export async function fetchPatientVaccinationsByPatient(){
 }
 
 
+export async function fetchPatientVaccinationDetailsByHealthCarer(patientId:string, vaccineId:string){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get(`/vaccination/getVaccinationDetailsByHealthCarer/${patientId}/${vaccineId}`, {
+            headers: {
+                Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+            }
+        } );
+        return res.data;
+       }, '/user/login');
+       return data;
+}
+
+
 
 
 
