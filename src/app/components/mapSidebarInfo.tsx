@@ -1,15 +1,17 @@
-import { Building2, MapPin, Phone, Mail, Clock } from "lucide-react"
+import { Building2, MapPin, Phone, Mail, Clock, X } from "lucide-react"
+import { HospitalResponse } from "../types/responseTypes"
 
-export default function MapSideBarInfo() {
+export default function MapSideBarInfo({hospital, isOpen, closeSideBar}: { hospital:HospitalResponse, isOpen: boolean, closeSideBar:()=>void}) {
   return (
-    <div className="bg-primary text-white p-6 h-full overflow-y-auto">
+    <div className={`bg-primary left-0 text-white p-6 h-full overflow-y-auto z-50 absolute transition-all duration-300 ease-in-out ${!isOpen && " left-[-100%]"}`}>
+      <X className=" absolute right-7 hover:bg-blue-950 cursor-pointer" onClick={closeSideBar}/>
       <h2 className="text-2xl font-bold mb-6">Informacion del Hospital</h2>
       
       <div className="space-y-4">
         <div className="flex items-start">
           <Building2 className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
           <div>
-            <h3 className="font-semibold">Hospital Nacional</h3>
+            <h3 className="font-semibold">{hospital.name}</h3>
             <p className="text-sm text-red-100">Sirviendo nuestra comunidad desde 1950</p>
           </div>
         </div>
@@ -26,7 +28,7 @@ export default function MapSideBarInfo() {
           <Phone className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
           <div>
             <h3 className="font-semibold">Telefono</h3>
-            <p className="text-sm text-red-100">+505 2222-3333</p>
+            <p className="text-sm text-red-100">{hospital.phone_number}</p>
           </div>
         </div>
         
@@ -34,7 +36,7 @@ export default function MapSideBarInfo() {
           <Mail className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
           <div>
             <h3 className="font-semibold">Email</h3>
-            <p className="text-sm text-red-100">info@hospitalnacional.ni</p>
+            <p className="text-sm text-red-100">{hospital.email}</p>
           </div>
         </div>
         

@@ -84,7 +84,7 @@ export interface AddressResponse {
 
 export interface HospitalResponse {
    id: number;
-   image: ImageResponse;
+   image: ImageResponse[];
    address: AddressResponse;
    name: string;
    phone_number: string;
