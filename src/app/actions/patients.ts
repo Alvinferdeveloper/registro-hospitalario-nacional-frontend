@@ -130,6 +130,16 @@ export async function fetchPatientVaccinationDetailsByHealthCarer(patientId:stri
 }
 
 
+export async function fetchHospitals(){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get(`/hospital/getHospitals`);
+        return res.data;
+       }, '/');
+       return data;
+}
+
+
+
 
 
 
