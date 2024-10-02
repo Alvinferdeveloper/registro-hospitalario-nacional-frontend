@@ -1,6 +1,6 @@
-import { vaccinationResponse } from "@/app/types/responseTypes";
+import { VaccinationResponse } from "@/app/types/responseTypes";
 
-export default function VaccinationDetails({ vaccinationDetails} : { vaccinationDetails: vaccinationResponse[]}) {
+export default function VaccinationDetails({ vaccinationDetails} : { vaccinationDetails: VaccinationResponse[]}) {
   const patientAge = new Date(Date.now()).getFullYear() - new Date(vaccinationDetails[0].patient.birthdate).getFullYear();
     return (
       <div className="max-w-lg  mx-auto bg-white p-6 rounded-lg shadow-md border border-gray-300">
