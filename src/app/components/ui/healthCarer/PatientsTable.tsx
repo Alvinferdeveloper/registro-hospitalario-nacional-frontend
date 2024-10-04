@@ -1,10 +1,10 @@
 "use client"
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Tooltip } from "@nextui-org/react";
 import { EyeIcon } from "../icons/EyeIcon";
 import { EditIcon } from "../icons/EditIcon";
 import Link from "next/link";
 import { Patient } from "@/app/types/responseTypes";
-import { Syringe, View } from "lucide-react";
+import { Syringe, View , Pencil, Eye} from "lucide-react";
+import Image from "next/image";
 const columns = [
     { uid: "name", name: "Nombres" },
     { uid: "cedula", name: "Cedula" },
@@ -15,71 +15,57 @@ const columns = [
 
 export default function PatientsTable({ patients }: { patients: Patient[] }) {
     return (
-        <Table aria-label="Static table with 4 columns and 4 users">
-            <TableHeader columns={columns}>
-                {(column) => (
-                    <TableColumn key={column.uid} align="start">
-                        {column.name}
-                    </TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={patients}>
-                {(patient) => (
-                    <TableRow key={patient.id}>
-                        <TableCell>
-                            <User
-                                avatarProps={{ radius: "lg", src: patient.profile_photo }}
-                                description={patient.email}
-                                name={patient.name}
-                            >
-                                {patient.email}
-                            </User>
-                        </TableCell>
-                        <TableCell>
-                            <p className="text-bold text-sm capitalize">{patient.identification}</p>
-                        </TableCell>
-                        <TableCell>
-                            <p className="text-bold text-sm capitalize">{patient.blood_type}</p>
-                        </TableCell>
-                        <TableCell>
-                            <p className="text-bold text-sm capitalize">{patient.gender}</p>
-                        </TableCell>
-                        <TableCell>
-                            <div className="relative flex items-center gap-5">
-                                <Link href={`/healthCarer/Dashboard/Patients/Consultation/${patient.id}`}>
-                                    <Tooltip content="Ver Expedientes" className=" text-black">
-                                        <span className="text-lg text-default cursor-pointer active:opacity-50">
-                                            <EyeIcon />
-                                        </span>
-                                    </Tooltip>
-                                </Link>
-                                <Link href={`/healthCarer/Dashboard/Patients/PatientConsultation/${patient.id}`}>
-                                    <Tooltip content="Nuevo Expediente " className=" text-black">
-                                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                            <EditIcon />
-                                        </span>
-                                    </Tooltip>
-                                </Link>
-                                <Link href={{ pathname: `/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`, query: { name: `${patient.name} ${patient.lastName}` } }}>
-                                    <Tooltip content="Nueva Vacuna " className=" text-black">
-                                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                            <Syringe />
-                                        </span>
-                                    </Tooltip>
-                                </Link>
-                                <Link href={`/healthCarer/Dashboard/Vaccine/Vaccinations/${patient.id}`}>
-                                    <Tooltip content="Ver vacunas" className=" text-black">
-                                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                            <View />
-                                        </span>
-                                    </Tooltip>
-                                </Link>
-                            </div>
-                        </TableCell>
-                    </TableRow>
-                )}
-            </TableBody>
-        </Table>
-
+        <div className=" rounded-lg shadow-lg overflow-hidden">
+          <div className="p-6">
+            <h2 className="text-2xl font-semibold text-white mb-4">Informacion de Los pacientes</h2>
+            <div className="overflow-x-auto rounded-lg">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cedula</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Blood Type</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {patients.map((patient) => (
+                    <tr key={patient.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10">
+                            <Image src={patient.profile_photo} width={500} height={500} alt="profile"></Image>
+                          </div>
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">{patient.name}</div>
+                            <div className="text-sm text-gray-500">{patient.email}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.identification}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          {patient.blood_type}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.gender}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.phone_number}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                          <Eye className="w-5 h-5" />
+                        </button>
+                        <button className="text-green-600 hover:text-green-900 mr-2">
+                          <Pencil className="w-5 h-5" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
     )
 }
