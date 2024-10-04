@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { UserRegisterInputs } from '@/app/types/types';
 import Cookies from 'js-cookie';
+import { useStore } from '@/app/state/zustand';
 
 interface Error {
     email?: string;
@@ -25,6 +26,7 @@ interface ErrorResponseData {
 export default function useRegister() {
     const [error, setError] = useState<Error>();
     const [loading, setLoading] = useState(false);
+    const { setUserLogged} = useStore();
     const router = useRouter();
     const register = async (body: UserRegisterInputs) => {
         try {
@@ -38,13 +40,13 @@ export default function useRegister() {
                 phone_number: body.phoneNumber
             })
             setLoading(false);
-            Cookies.set("access_token", res.data.token, { expires:1})
-            router.push('/user/map');
+            Cookies.set("access_token", res.data.token, { expires:1});
+            setUserLogged(res.data.healthCarer || res.data.patient);
+            router.push('/user/dashboard/consultations');
         } catch (err) {
             setLoading(false);
             const axiosError = err as AxiosError;
             const errorData = axiosError.response?.data as ErrorResponseData;
-            console.log(errorData.message)
             if (axiosError.response) {
                 if (axiosError.response.status == 400) {
                     errorData.validation?.email && setError(error => ({ ...error, ['email']: 'Este email ya existe' }));

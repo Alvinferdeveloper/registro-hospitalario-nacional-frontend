@@ -30,6 +30,7 @@ export interface HealthCarer {
    area: string;
    type: string;
    phone_number: string;
+   profile_photo: string;
    email: string;
 }
 
@@ -94,5 +95,4 @@ export interface HospitalResponse {
    lng: string;
 }
 
-e
 
