@@ -1,8 +1,13 @@
 import React from "react"
 import { LayoutDashboard, FolderKanban, ListTodo, Wrench, Bell, MessageSquare, LogOut } from 'lucide-react'
 import Link from "next/link"
+import { useStore } from "@/app/state/zustand";
+import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
+
 export default function SideBar({ children }: { children: any }) {
-    
+    const { userLogged } = useStore();
+    const router = useRouter();
     const menuItems = [
         { name: 'Patients', icon: LayoutDashboard, redirectTo: '/healthCarer/Dashboard/Patients' },
         { name: 'Projects', icon: FolderKanban, redirectTo: '/healthCarer/login '},
@@ -10,11 +15,11 @@ export default function SideBar({ children }: { children: any }) {
         { name: 'Services', icon: Wrench },
         { name: 'Notifications', icon: Bell, badge: 2 },
         { name: 'Chat', icon: MessageSquare },
-        {name: 'Logout', icon: LogOut }
       ]
 
       const Logout = ()=> {
-        
+        router.push('/healthCarer/login');
+        Cookies.remove('access_token');
       }
     return (
         <div className="flex h-screen bg-gray-100">
@@ -52,6 +57,12 @@ export default function SideBar({ children }: { children: any }) {
                  </Link>
                 </li>
               ))}
+               <li onClick={Logout}>
+                 <button className={'w-full flex items-center space-x-3 px-4 py-2 rounded-md transition-colors text-gray-300 hover:bg-gray-800'}>
+                    <LogOut className="w-5 h-5" />
+                    <span>LogOut</span>
+                  </button>
+                </li>
             </ul>
           </nav>
           <div className="flex items-center space-x-3 mt-8">
@@ -61,8 +72,8 @@ export default function SideBar({ children }: { children: any }) {
               className="w-10 h-10 rounded-full object-cover border-2 border-blue-500"
             />
             <div>
-              <h3 className="font-medium">Emily Jonson</h3>
-              <p className="text-sm text-gray-400">jonson@bress.com</p>
+              <h3 className="font-medium">{ userLogged?.name} {userLogged?.lastName}</h3>
+              <p className="text-sm text-gray-400">{ userLogged?.email}</p>
             </div>
           </div>
         </div>
