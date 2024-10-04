@@ -5,13 +5,6 @@ import Link from "next/link";
 import { Patient } from "@/app/types/responseTypes";
 import { Syringe, View , Pencil, Eye} from "lucide-react";
 import Image from "next/image";
-const columns = [
-    { uid: "name", name: "Nombres" },
-    { uid: "cedula", name: "Cedula" },
-    { uid: "blood", name: "Tipo Sangre" },
-    { uid: "gender", name: "Genero" },
-    { uid: "phoneNumber", name: "Telefono" }
-];
 
 export default function PatientsTable({ patients }: { patients: Patient[] }) {
     return (
@@ -22,12 +15,13 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-100">
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cedula</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Blood Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo de sangre</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Genero</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefono</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expediente</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vacuna</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -53,12 +47,30 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.gender}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.phone_number}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <Link href={`/healthCarer/Dashboard/Patients/Consultation/${patient.id}`}>
                         <button className="text-indigo-600 hover:text-indigo-900 mr-2">
                           <Eye className="w-5 h-5" />
                         </button>
-                        <button className="text-green-600 hover:text-green-900 mr-2">
+                        </Link>
+                       <Link href={`/healthCarer/Dashboard/Patients/PatientConsultation/${patient.id}`}>
+                       <button className="text-green-600 hover:text-green-900 mr-2">
                           <Pencil className="w-5 h-5" />
                         </button>
+                       </Link>
+                       
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        
+                       <Link href={`/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`}>
+                       <button className="text-green-600 hover:text-green-900 mr-2">
+                          <Syringe className="w-5 h-5" />
+                        </button>
+                       </Link>
+                       <Link href={`/healthCarer/Dashboard/Vaccine/Vaccinations/${patient.id}`}>
+                       <button className="text-green-600 hover:text-green-900 mr-2" >
+                          <View className="w-5 h-5"   />
+                        </button>
+                       </Link>
                       </td>
                     </tr>
                   ))}
