@@ -1,14 +1,18 @@
 import { Building2, MapPin, Phone, Mail, Clock, X } from "lucide-react"
 import { HospitalResponse } from "../types/responseTypes"
+import Carousel from "./ui/Carousel"
 
 export default function MapSideBarInfo({hospital, isOpen, closeSideBar}: { hospital:HospitalResponse, isOpen: boolean, closeSideBar:()=>void}) {
+  const images = hospital.images.map(image => {return {original:image.image_url, thumbnail: image.image_url}})
   return (
-    <div className={`bg-primary left-0 text-white p-6 h-full overflow-y-auto z-50 absolute transition-all duration-300 ease-in-out ${!isOpen && " left-[-100%]"}`}>
+    <div className={`bg-primary left-0 w-[30%] text-white p-6 h-screen overflow-auto overflow-y-auto z-50 absolute transition-all duration-300 ease-in-out ${!isOpen && " left-[-100%]"}`}>
       <X className=" absolute right-7 hover:bg-blue-950 cursor-pointer" onClick={closeSideBar}/>
       <h2 className="text-2xl font-bold mb-6">Informacion del Hospital</h2>
-      
       <div className="space-y-4">
-        <div className="flex items-start">
+      <div className="flex">
+     <Carousel images={images}/>
+     </div>
+        <div className="flex items-start ">
           <Building2 className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
           <div>
             <h3 className="font-semibold">{hospital.name}</h3>

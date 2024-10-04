@@ -1,0 +1,5 @@
+.image-gallery-left-nav svg,
+.image-gallery-right-nav svg {
+  width: 35px!important; /* Ajusta el ancho */
+  height: 35px!important; 
+}

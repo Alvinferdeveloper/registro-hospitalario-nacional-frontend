@@ -28,7 +28,6 @@ export default function RootLayout({
         </NextUIProvider>}
         <Script src="/flowbite.min.js" strategy="beforeInteractive"/>
         </body>
-    
     </html>
   );
 }
