@@ -37,6 +37,7 @@ export interface HealthCarer {
 
 export interface ConsultationResponse {
    id: string;
+   reason:string;
    patientId: string;
    summary: string;
    diagnosis: string;

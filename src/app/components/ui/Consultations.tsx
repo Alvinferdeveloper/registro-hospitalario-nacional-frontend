@@ -27,7 +27,7 @@ export default async function Consultations({ consultations, patient }: { consul
                   </div>
                   <div className="flex items-start space-x-2 text-gray-600">
                     <FileTextIcon className="w-5 h-5 mt-1" />
-                    <p className="text-sm">{consultation.diagnosis}</p>
+                    <p className="text-sm">{consultation.reason}</p>
                   </div>
                 </div>
                 <div className="bg-gray-50 px-6 py-3">
