@@ -61,7 +61,7 @@ export default function PatientsTable({ patients }: { patients: Patient[] }) {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         
-                       <Link href={`/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`}>
+                       <Link href={{pathname:`/healthCarer/Dashboard/Vaccine/NewVaccination/${patient.id}`, query:{patientName: patient.name, patientLastName:patient.lastName}}}>
                        <button className="text-green-600 hover:text-green-900 mr-2">
                           <Syringe className="w-5 h-5" />
                         </button>
