@@ -1,8 +1,8 @@
 import { fetchPatientVaccinationsByPatient } from "@/app/actions/patients";
 import Vaccinations from "@/app/components/ui/Vaccinations";
-import { vaccinationResponse } from "@/app/types/responseTypes";
+import { VaccinationResponse } from "@/app/types/responseTypes";
 
 export default async function PatientVaccinations(){
-    const vaccinations = await fetchPatientVaccinationsByPatient() as vaccinationResponse[];
+    const vaccinations = await fetchPatientVaccinationsByPatient() as VaccinationResponse[];
     return <Vaccinations vaccinations={vaccinations}/>
 }
