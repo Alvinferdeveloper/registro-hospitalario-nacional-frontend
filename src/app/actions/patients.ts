@@ -139,6 +139,18 @@ export async function fetchHospitals(){
 }
 
 
+export async function fetchPatientPlansByPatient(){
+    const data = await catchAsync(async()=>{
+        const res = await axios.get(`/patientPlans/getPatientPlansByPatient`, {
+            headers: {
+                Authorization: cookies().get('access_token')?.value ? 'Bearer ' + cookies().get('access_token')?.value : null,
+            }
+        });
+        return res.data;
+       }, '/');
+       return data;
+}
+
 
 
 

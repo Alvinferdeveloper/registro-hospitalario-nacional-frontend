@@ -8,8 +8,8 @@ export default function SideBar({ children }: { children: React.ReactNode }) {
     const { userLogged } = useStore();
     const router = useRouter();
     const menuItems = [
-        { name: 'Expedientes', icon: LayoutDashboard, redirectTo: '/healthCarer/Dashboard/Patients' },
-        { name: 'Projects', icon: FolderKanban, redirectTo: '/healthCarer/login ' },
+        { name: 'Expedientes', icon: LayoutDashboard, redirectTo: '/user/dashboard/consultations' },
+        { name: 'Plan', icon: FolderKanban, redirectTo: '/user/dashboard/plans ' },
         { name: 'Task list', icon: ListTodo },
         { name: 'Services', icon: Wrench },
         { name: 'Notifications', icon: Bell, badge: 2 },

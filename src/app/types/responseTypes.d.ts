@@ -96,4 +96,12 @@ export interface HospitalResponse {
    lng: string;
 }
 
+export interface PatientPlanResponse{
+    id: number,
+    date: string,
+    medicament: string,
+    prescription: string,
+    active: number,
+}
+
 
