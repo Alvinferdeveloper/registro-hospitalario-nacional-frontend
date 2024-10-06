@@ -5,29 +5,32 @@ import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { CircularProgress } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
+import { Plus } from "lucide-react";
 
 export default function ConsultationForm({ patientId }: { patientId: string }) {
   const { loading, insertConsultation, error } = useInsertConsultation();
   const [summary, setSummary] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
   const [plan, setPlan] = useState('');
-  const [ reason, setReason] = useState('');
+  const [reason, setReason] = useState('');
+  const [patientPlans, setPatientPlans] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    insertConsultation({ summary, diagnosis, plan, patientId, reason })
+    insertConsultation({ summary, diagnosis, plan, patientId, reason, patientPlans });
   }
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6 light">
       <div className=' '>
         <label htmlFor="summary" className="font-bold text-gray-900">Motivo</label>
         <Input classNames={{
           input: " border-none focus:outline-none focus:ring-0",
-          inputWrapper:' bg-slate-200 focus:bg-slate-800'
+          inputWrapper: ' bg-slate-200 focus:bg-slate-800'
         }}
-        value={reason}
-        onChange={(e)=> setReason(e.target.value)}
-         />
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+        />
       </div>
       <div className=' h-40'>
         <label htmlFor="summary" className="font-bold text-gray-900">Resumen</label>
@@ -41,6 +44,19 @@ export default function ConsultationForm({ patientId }: { patientId: string }) {
         <label htmlFor="plan" className="font-bold text-gray-900">Plan de Tratamiento</label>
         <ReactQuill theme="snow" value={plan} onChange={setPlan} className=' h-[70%]' />
       </div>
+      <label htmlFor="" className="font-bold text-gray-900 block mb-1 pt-5">Plan para paciente</label>
+      {
+        patientPlans.map((patientPlan, index) => (
+          <div className=''>
+            <input type="text" className="w-[80%]" value={patientPlans[index]} onChange={(e)=> setPatientPlans(patientPlans => patientPlans.map((patientPlan, i) => index == i ? e.target.value : patientPlan ))} />
+          </div>
+        ))
+      }
+      <button type="button" className=" bg-slate-500 p-2 hover:bg-slate-600" onClick={(e)=> {
+        setPatientPlans(prev => [...prev, '']);
+      }}>
+        <Plus color="white" />
+      </button>
       <div className="flex items-center justify-end">
         <button
           type="submit"

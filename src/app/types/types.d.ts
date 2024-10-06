@@ -31,6 +31,7 @@ export interface Consultation {
     summary: string;
     diagnosis: string;
     plan:string;
+    patientPlans: string[];
 }
 
 export interface Vaccination {
