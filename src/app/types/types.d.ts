@@ -25,13 +25,18 @@ export interface HealthCarerLoginInputs {
     password: string;
 }
 
+export interface PatientPlan {
+    medicament: string;
+    prescription: string;
+}
+
 export interface Consultation {
     reason:string;
     patientId: string;
     summary: string;
     diagnosis: string;
     plan:string;
-    patientPlans: string[];
+    patientPlans: PatientPlan[];
 }
 
 export interface Vaccination {

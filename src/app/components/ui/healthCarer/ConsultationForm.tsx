@@ -6,6 +6,8 @@ import 'react-quill/dist/quill.snow.css';
 import { CircularProgress } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
 import { Plus } from "lucide-react";
+import { PatientPlan } from "@/app/types/types";
+
 
 export default function ConsultationForm({ patientId }: { patientId: string }) {
   const { loading, insertConsultation, error } = useInsertConsultation();
@@ -13,7 +15,7 @@ export default function ConsultationForm({ patientId }: { patientId: string }) {
   const [diagnosis, setDiagnosis] = useState('');
   const [plan, setPlan] = useState('');
   const [reason, setReason] = useState('');
-  const [patientPlans, setPatientPlans] = useState<string[]>([]);
+  const [patientPlans, setPatientPlans] = useState<PatientPlan[]>([]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,12 +50,16 @@ export default function ConsultationForm({ patientId }: { patientId: string }) {
       {
         patientPlans.map((patientPlan, index) => (
           <div className=''>
-            <input type="text" className="w-[80%]" value={patientPlans[index]} onChange={(e)=> setPatientPlans(patientPlans => patientPlans.map((patientPlan, i) => index == i ? e.target.value : patientPlan ))} />
+            <span className="text-sm font-medium text-white bg-red-500 mb-2 px-3 py-1 rounded-full block w-10">
+              #{index + 1}
+            </span>
+            <input type="text" className=" mb-2" placeholder="Medicamento" value={patientPlans[index].medicament} onChange={(e) => setPatientPlans(patientPlans => patientPlans.map((patientPlan, i) => index == i ? { ...patientPlan, medicament:e.target.value} : patientPlan))} />
+            <input type="text" className="w-[80%]" value={patientPlans[index].prescription} onChange={(e) => setPatientPlans(patientPlans => patientPlans.map((patientPlan, i) => index == i ? { ...patientPlan, prescription:e.target.value} : patientPlan))} placeholder="Prescripcion" />
           </div>
         ))
       }
-      <button type="button" className=" bg-slate-500 p-2 hover:bg-slate-600" onClick={(e)=> {
-        setPatientPlans(prev => [...prev, '']);
+      <button type="button" className=" bg-slate-500 p-2 hover:bg-slate-600" onClick={(e) => {
+        setPatientPlans(prev => [...prev, { medicament:'', prescription:''}]);
       }}>
         <Plus color="white" />
       </button>
